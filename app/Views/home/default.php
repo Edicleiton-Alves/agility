@@ -29,7 +29,7 @@ define('CONFIGURACAO', [
 	<meta name="theme-color" content="#075600">
 	<meta name="apple-mobile-web-app-status-bar-style" content="#075600">
 	<meta name="msapplication-navbutton-color" content="#075600">
-	<meta name="facebook-domain-verification" content="idwmp814fyc9txijorxzr4l3czxt5a" />
+	<meta name="facebook-domain-verification" content="5oorqct37lonfv00350tyf6duzunui" />
 	<link rel="icon" href="/img/favicon.png" type="image/x-icon">
 	<title>Início | Agility Telecom</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
