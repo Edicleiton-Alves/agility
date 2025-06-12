@@ -1,0 +1,26 @@
+name: 🚀 Deploy in production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+
+      - name: 📂 Sync new files
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          server: ${{ secrets.host_prd }}
+          username: ${{ secrets.user_prd }}
+          password: ${{ secrets.password_prd }}
+          port: ${{ secrets.port_prd }}
+          remote_path: ${{ secrets.path_prd }}
+          sftp_only: true
+          exclude: |
+            **/*.ini

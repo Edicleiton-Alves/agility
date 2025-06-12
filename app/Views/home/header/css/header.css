@@ -1,0 +1,94 @@
+*::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgb(138, 186, 36);
+    border-radius: 20px;
+}
+
+* {
+    scrollbar-color: rgb(138, 186, 36);
+}
+
+.dnyquQ {
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 21px;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Poppins;
+    color: rgb(138, 186, 36);
+}
+
+.Ddutv {
+    color: rgb(42, 46, 67);
+    font-weight: 700;
+    font-style: normal;
+    font-family: Manrope;
+}
+
+.agltDdutv {
+    color: rgb(42, 46, 67);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 27px;
+    font-style: normal;
+    text-align: initial;
+    font-family: Poppins;
+    letter-spacing: -0.025em;
+}
+
+.agltP {
+    color: rgb(70, 70, 71);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19px;
+    text-align: initial;
+    font-style: normal;
+    font-family: Poppins;
+    letter-spacing: -0.025em;
+}
+
+.fpPjcqFoo {
+    color: rgb(70, 70, 71);
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    font-family: Poppins;
+}
+
+.fpPjcq {
+    background-color: rgb(1, 144, 161);
+}
+
+.fpPjcqmotto {
+    margin: 0px;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    font-family: Poppins;
+}
+
+.navbar-brand {
+    display: contents;
+}
+
+.nav-link:hover {
+    font-weight: bold !important;
+    color: rgb(138, 186, 36) !important;
+}
+
+.btn-success {
+    --bs-btn-bg: rgb(138, 186, 36);
+    --bs-btn-color: #fff;
+    --bs-btn-border-color: rgb(138, 186, 36);
+    --bs-btn-hover-bg: #075600;
+}
+
+@media(min-width: 576px) {
+    .collapse {
+        height: 100%;
+    }
+}

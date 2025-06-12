@@ -1,0 +1,33 @@
+.itens:hover{
+    color: #075600;
+}
+
+.footerStyle{
+    box-shadow: inset -13px -10px 10px 0px rgba(0, 0, 0, 0.5);
+    background-color: #77EA45;
+}
+
+@media(max-width: 767.98px) {
+    .footerStyle{
+        box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+    }
+}
+
+@keyframes pulse-whats {
+    0% {
+        -moz-box-shadow: 0 0 0 0 #26b43c;
+        box-shadow: 0 0 0 0 #26b43c;
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 15px #26b43c00;
+        box-shadow: 0 0 0 15px #26b43c00;
+    }
+}
+.whatsapp{
+    bottom: 10%;
+    right: 4%;
+    z-index: 500;
+    position: fixed;
+    animation: pulse-whats 2s infinite;
+    border-radius: 50%;
+}

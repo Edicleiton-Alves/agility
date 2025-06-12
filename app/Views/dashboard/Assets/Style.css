@@ -1,0 +1,349 @@
+*::-webkit-scrollbar {
+	width: 0.15rem;
+	height: 0.15rem;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: #ffc107;
+	border-radius: 20px;
+}
+
+* {
+	scrollbar-color: #ffc107;
+}
+
+
+@font-face {
+	font-family: 'gilroyBold';
+	src: url('/fonts/Radomir Tinkov - Gilroy-Bold.otf') format(opentype);
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'gilroyExBold';
+	src: url('/fonts/Gilroy-ExtraBold.otf') format(opentype);
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'gilroySemiBold';
+	src: url('/fonts/Radomir Tinkov - Gilroy-SemiBold.otf') format(opentype);
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'gilroyMedium';
+	src: url('/fonts/Radomir Tinkov - Gilroy-Medium.otf') format(opentype);
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'gilroyRegBold';
+	src: url('/fonts/Radomir Tinkov - Gilroy-Regular.otf') format(opentype);
+	font-weight: normal;
+	font-style: normal;
+}
+
+.gilroyRegBold {
+	font-family: 'gilroyRegBold';
+}
+
+.gilroyMedium {
+	font-family: 'gilroyMedium';
+}
+
+.gilroyBold {
+	font-family: 'gilroyBold';
+}
+
+.gilroyExBold {
+	font-family: 'gilroyExBold';
+}
+
+.gilroySemiBold {
+	font-family: 'gilroySemiBold';
+}
+
+body {
+	font-size: .8rem !important;
+}
+
+@media (min-width: 768px) {
+	*::-webkit-scrollbar {
+		width: 0.45rem;
+		height: 0.45rem;
+	}
+
+	body {
+		font-size: 1rem !important;
+	}
+}
+
+*/ .mw-mc {
+	min-width: max-content;
+}
+
+.vh-60 {
+	height: 60vh;
+}
+
+#text path {
+	fill: white !important;
+}
+
+#logo path {
+	fill: white !important;
+}
+
+.nav-pills {
+	.nav-link {
+		text-align: left;
+		color: #fff !important;
+	}
+
+	.nav-link:hover {
+		color: #ffc107 !important;
+	}
+
+	.nav-link.active,
+	.show>.nav-link {
+		border-radius: 0.375rem 0 0 0.375rem;
+		background: #fff !important;
+		color: #212529 !important;
+		text-align: left;
+	}
+}
+
+.shadow-boxes {
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.table td span {
+	display: block;
+}
+
+.table-warning {
+	--bs-table-striped-bg: #ff9000 !important;
+	--bs-table-bg: #ff9000 !important;
+}
+
+.table-danger {
+	--bs-table-bg: #bd1c2a !important;
+	--bs-table-striped-bg: #bd1c2a !important;
+}
+
+.bg-plan {
+	background: linear-gradient(to left, rgb(44 64 0), #114c00)
+}
+
+@keyframes blink {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.blink {
+	animation: blink 0.8s linear 5;
+}
+
+.statusReg {
+	min-width: 150px;
+	max-width: 100%;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	border-radius: 8px;
+	padding: 5px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+main {
+	margin-left: 80px;
+	transition: margin-left 0.3s ease;
+}
+
+.menu-lateral {
+	width: 80px;
+	transition: width 0.3s ease;
+	overflow: hidden;
+	position: fixed;
+	z-index: 1050;
+	top: 0;
+	left: 0;
+	height: 100vh;
+}
+
+.menu-lateral:hover,
+.menu-lateral.menu-fixo {
+	width: 250px;
+}
+
+.greeting-text {
+	display: none;
+	transition: opacity 0.3s ease;
+}
+
+.menu-lateral:hover .greeting-text,
+.menu-lateral.menu-fixo .greeting-text {
+	display: block;
+}
+
+#logoImage {
+	position: relative;
+	width: 100px;
+	height: 100px;
+}
+
+#logoImage img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: opacity 0.3s ease;
+}
+
+.menu-lateral::before {
+	content: "";
+	background-image: url('img/logo.svg');
+	position: absolute;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	visibility: hidden;
+}
+
+.menu-lateral:hover #logoImage,
+.menu-lateral.menu-fixo #logoImage {
+	content: url('img/logo.svg');
+	height: 125px;
+}
+
+.menu-lateral .nav-link {
+	white-space: nowrap;
+}
+
+.menu-lateral .nav-link i {
+	font-size: 1.5rem;
+}
+
+.menu-lateral .nav-link span {
+	margin-left: 10px;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.menu-lateral:hover .nav-link span,
+.menu-lateral.menu-fixo .nav-link span {
+	opacity: 1;
+}
+
+.menu-lateral:hover~main,
+.menu-lateral.menu-fixo~main {
+	margin-left: 250px;
+}
+
+@media (min-width: 769px) {
+
+	.menu-lateral:hover,
+	.menu-lateral.menu-fixo {
+		width: 250px;
+	}
+
+	.menu-lateral:hover .greeting-text,
+	.menu-lateral.menu-fixo .greeting-text {
+		display: block;
+		opacity: 1;
+	}
+
+	.menu-lateral:hover #logoImage,
+	.menu-lateral.menu-fixo #logoImage {
+		content: url('img/logo.svg');
+		height: 125px;
+	}
+
+	.menu-lateral:hover .nav-link span,
+	.menu-lateral.menu-fixo .nav-link span {
+		opacity: 1;
+	}
+
+	.menu-lateral:hover~main,
+	.menu-lateral.menu-fixo~main {
+		margin-left: 250px;
+	}
+
+	.menu-lateral:hover+main,
+	.menu-lateral.menu-fixo+main {
+		margin-left: 250px;
+	}
+
+	.menu-lateral:hover .btn-somente-visivel,
+	.menu-lateral.menu-fixo .btn-somente-visivel {
+		display: inline-block !important;
+	}
+}
+
+@media (max-width: 768px) {
+	.menu-lateral {
+		width: 250px !important;
+		overflow: visible;
+		background: #ffffff00 !important;
+	}
+
+	.greeting-text {
+		display: block !important;
+		opacity: 1 !important;
+	}
+
+	#logoImage {
+		content: url('img/logo.svg');
+		height: 125px;
+	}
+
+	.menu-lateral .nav-link span {
+		opacity: 1 !important;
+	}
+
+	main {
+		margin-left: 0 !important;
+	}
+
+	.btn-somente-visivel {
+		display: none !important;
+	}
+}
+
+.offcanvas,
+.offcanvas-lg,
+.offcanvas-md,
+.offcanvas-sm,
+.offcanvas-xl,
+.offcanvas-xxl {
+	--bs-offcanvas-width: 330px;
+}
+
+.btn-somente-visivel {
+	display: none !important;
+}
+
+.position-absolute.top-0.end-0.m-2 {
+	z-index: 1100;
+}
+
+.logo_menu {
+	pointer-events: none;
+}
