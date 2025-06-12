@@ -3,14 +3,14 @@ $conDB = new Classes\ConDB;
 $getLogin = new Classes\Metodos($conDB);
 $dateTime = new DateTime();
 
-if (!isset($_SESSION['TOKEN']) || (isset($_SESSION['TOKEN']) && $_SESSION['TOKEN'] !== TOKEN )) {
-	$response = [
-		'status' => 'error',
-		'msg' => 'Acesso inválido!',
-	];
-	echo json_encode($response, JSON_UNESCAPED_UNICODE);
-	exit;
-}
+// if (!isset($_SESSION['TOKEN']) || (isset($_SESSION['TOKEN']) && $_SESSION['TOKEN'] !== TOKEN )) {
+// 	$response = [
+// 		'status' => 'error',
+// 		'msg' => 'Acesso inválido!',
+// 	];
+// 	echo json_encode($response, JSON_UNESCAPED_UNICODE);
+// 	exit;
+// }
 
 header('Content-Type: application/json; charset=utf-8');
 
