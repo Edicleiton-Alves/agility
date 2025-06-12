@@ -19,7 +19,7 @@ define('VERSION', '1.0.0');
 
 //database conection
 define('DATABASE', [
-	'host' => 'localhost',
+	'host' => 'agilityindependencia.com.br',
 	'dbname' => 'anton755_rede_aglt',
 	'user' => 'anton755_rede',
 	'pass' => 'dR1LanZGEr]I'
