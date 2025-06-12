@@ -5,7 +5,7 @@ $conDB = new Classes\ConDB;
 $deleteUsuario = new Classes\Metodos($conDB);
 
 $deleteUsuario = $deleteUsuario
-	->table('tb_sysAdmin')
+	->table('tb_sysadmin')
 	->where('id', '=', htmlentities($id))
 	->set('status', 2)
 	->set('email', '')

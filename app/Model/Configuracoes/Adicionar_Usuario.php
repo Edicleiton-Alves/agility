@@ -43,7 +43,7 @@ if ($senha['status'] == 'error') {
 }
 
 $postUser = $postUser
-->table('tb_sysAdmin')
+->table('tb_sysadmin')
 ->value('usuario', $dados['usuario'])
 ->value('email', $dados['e-mail'])
 ->value('senha', password_hash($dados['senha'], PASSWORD_DEFAULT))

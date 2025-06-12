@@ -23,7 +23,7 @@
 					<?php
 					$conDb = new Classes\ConDB;
 					$getUsers = new Classes\Metodos($conDb);
-					$getUsers = $getUsers->table('tb_sysAdmin')->select('id, usuario, email, status')->where('status', '=', 1)->get();
+					$getUsers = $getUsers->table('tb_sysadmin')->select('id, usuario, email, status')->where('status', '=', 1)->get();
 
 					foreach ($getUsers as $user) {
 					?>

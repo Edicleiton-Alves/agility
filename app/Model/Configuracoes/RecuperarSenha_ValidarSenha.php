@@ -33,14 +33,14 @@ if ($senhaV['status'] == 'error') {
 }
 
 $getAdmin = $getAdmin
-	->table('tb_sysAdmin')
+	->table('tb_sysadmin')
 	->where('id', '=', $id)
 	->get();
 
 if (!empty($getAdmin)) {
 
 	$updateSenha = $updateSenha
-		->table('tb_sysAdmin')
+		->table('tb_sysadmin')
 		->set('senha', password_hash($senhaV['senha'], PASSWORD_DEFAULT))
 		->where('id', '=', $id)
 		->put();

@@ -10,7 +10,7 @@ if (!isset($_SESSION['TOKEN']) || (isset($_SESSION['TOKEN']) && $_SESSION['TOKEN
 }
 
 try {
-    $getAdmin = $getAdmin->table('tb_sysAdmin')->where('email', '=', $_POST['email'])->get();
+    $getAdmin = $getAdmin->table('tb_sysadmin')->where('email', '=', $_POST['email'])->get();
 
     if (empty($getAdmin)) {
         throw new Exception("Erro: Email não cadastrado, verifique e tente novamente.");
