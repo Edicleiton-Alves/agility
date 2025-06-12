@@ -2,7 +2,7 @@
 
 $app->get('/load/planos', function () {
 	if (AUTH['status'] == 'success') {
-		require PATH['Views'] . 'Dashboard/Loads/Planos/Planos.php';
+		require PATH['Views'] . 'dashboard/Loads/Planos/Planos.php';
 	} else {
 		echo "<script> window.location = '/';</script>";
 	}
@@ -10,7 +10,7 @@ $app->get('/load/planos', function () {
 
 $app->get('/load/cadastroPlan', function () {
 	if (AUTH['status'] == 'success') {
-		require PATH['Views'] . 'Dashboard/Loads/Planos/Cadastro_Plano.php';
+		require PATH['Views'] . 'dashboard/Loads/Planos/Cadastro_Plano.php';
 	} else {
 		echo "<script> window.location = '/';</script>";
 	}
@@ -18,7 +18,7 @@ $app->get('/load/cadastroPlan', function () {
 
 $app->get('/load/cadSva', function () {
 	if (AUTH['status'] == 'success') {
-		require PATH['Views'] . 'Dashboard/Loads/Planos/Cadastro_SVA.php';
+		require PATH['Views'] . 'dashboard/Loads/Planos/Cadastro_SVA.php';
 	} else {
 		echo "<script> window.location = '/';</script>";
 	}
