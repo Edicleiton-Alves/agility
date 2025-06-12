@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 session_set_cookie_params([
 	'lifetime' => 0,  // Expira quando o navegador é fechado
 	'path' => '/',
-	'domain' => 'localhost',
+	'domain' => $_SERVER['HTTP_HOST'],
 	'secure' => true,  // Somente sobre HTTPS
 	'httponly' => true,  // Acesso apenas via HTTP (não JavaScript)
 	'samesite' => 'Strict',  // Limita o envio de cookies a solicitações do mesmo site
