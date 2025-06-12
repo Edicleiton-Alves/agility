@@ -3,7 +3,7 @@
 
 $app->get('/load/configuracoes', function () {
 	if (AUTH['status'] == 'success') {
-		require PATH['Views'] . 'Dashboard/Loads/Configuracoes/Configuracoes.php';
+		require PATH['Views'] . 'dashboard/Loads/Configuracoes/Configuracoes.php';
 	} else {
 		echo "<script> window.location = '/';</script>";
 	}
