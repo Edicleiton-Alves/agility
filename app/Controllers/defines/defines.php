@@ -20,7 +20,7 @@ define('VERSION', '1.0.0');
 //database conection
 define('DATABASE', [
 	'host' => 'localhost',
-	'dbname' => 'rede_aglt',
-	'user' => 'root',
-	'pass' => 'root'
+	'dbname' => 'anton755_rede_aglt',
+	'user' => 'anton755_rede',
+	'pass' => 'dR1LanZGEr]I'
 ]);
