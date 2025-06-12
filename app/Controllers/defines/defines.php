@@ -21,6 +21,6 @@ define('VERSION', '1.0.0');
 define('DATABASE', [
 	'host' => 'agilityindependencia.com.br',
 	'dbname' => 'anton755_rede_aglt',
-	'user' => 'anton755_rede',
-	'pass' => 'dR1LanZGEr]I'
+	'user' => 'anton755',
+	'pass' => 'Sup0rt3pn*'
 ]);
