@@ -22,9 +22,6 @@
                             <a class="nav-link rounded-1 h-100 d-flex" href="#beneficios">
                                 <li class="px-3 my-auto">Sobre a Agility Telecom</li>
                             </a>
-                            <a class="nav-link rounded-1 h-100 d-flex" href="https://api.whatsapp.com/send?phone=<?= CONFIGURACAO['whatsapp'] ?>&text=Olá, gostaria de falar com a Agility Telecom, quero ser um franqueado!" target="_blank" rel="noopener">
-                                <li class="px-3 my-auto">Seja um Franqueado</li>
-                            </a>
                             <a class="text-decoration-none h-100 d-flex" href="<?= CONFIGURACAO['area_cliente'] ?>" target="_blank" rel="noopener">
                                 <li class="mx-2 my-auto btn btn-success rounded-2">Área do Cliente</li>
                             </a>
