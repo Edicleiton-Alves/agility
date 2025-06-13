@@ -5,25 +5,25 @@ $delConf = new Classes\Metodos($conDB);
 $postConf = new Classes\Metodos($conDB);
 $dadoVazio = null;
 
-foreach ($_POST as $key => $value) {
-    if (empty($value)) {
-        $dadoVazio = 'vazio';
-        break;
-    }
-}
+// foreach ($_POST as $key => $value) {
+//     if (empty($value)) {
+//         $dadoVazio = 'vazio';
+//         break;
+//     }
+// }
 
-if ($dadoVazio === 'vazio') {
-    echo json_encode([
-        'status' => 'error',
-        'msg' => 'Todos os campos obrigatórios devem ser preenchidos'
-    ], JSON_UNESCAPED_UNICODE);
-    exit;
-}
+// if ($dadoVazio === 'vazio') {
+//     echo json_encode([
+//         'status' => 'error',
+//         'msg' => 'Todos os campos obrigatórios devem ser preenchidos'
+//     ], JSON_UNESCAPED_UNICODE);
+//     exit;
+// }
 
-$dados = [];
-foreach ($_POST as $key => $value) {
-    $dados[$key] = htmlentities(trim($value));
-}
+// $dados = [];
+// foreach ($_POST as $key => $value) {
+//     $dados[$key] = htmlentities(trim($value));
+// }
 
 $existe = $getConf->table('tb_configuracoes')->get();
 
