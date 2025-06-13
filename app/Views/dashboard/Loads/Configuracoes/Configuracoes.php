@@ -137,6 +137,14 @@
 					<input type="number" class="form-control" id="whatsapp" name="whatsapp" value="<?= $config->whatsapp ?? '' ?>">
 				</div>
 			</div>
+
+			<div class="col-md-4">
+				<label for="endereco" class="form-label">Edereço</label>
+				<div class="input-group input-group-sm">
+					<span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
+					<input type="text" class="form-control" id="endereco" name="endereco" value="<?= $config->endereco ?? '' ?>">
+				</div>
+			</div>
 		</div>
 
 		<div class="text-center mt-4">

@@ -16,7 +16,8 @@ define('CONFIGURACAO', [
 	'google_play' => $getConf[0]->google_play,
 	'app_store' => $getConf[0]->app_store,
 	'area_cliente' => $getConf[0]->area_cliente,
-	'whatsapp' => $getConf[0]->whatsapp
+	'whatsapp' => $getConf[0]->whatsapp,
+	'endereco' => $getConf[0]->endereco
 ]);
 ?>
 

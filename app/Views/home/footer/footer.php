@@ -8,7 +8,8 @@
                     <div class="ps-3">
                         <p class="mb-1">Agility Serviços de Telecomunicações LTDA</p>
                         <p class="mb-1">CNPJ: <span class="text-muted"><?= CONFIGURACAO['cnpj'] ?></span></p>
-                        <p class="mb-0">E-mail: <span class="text-muted"><?= CONFIGURACAO['email'] ?></span></p>
+                        <p class="mb-1">E-mail: <span class="text-muted"><?= CONFIGURACAO['email'] ?></span></p>
+                        <p class="mb-0">Endereço: <span class="text-muted"><?= CONFIGURACAO['endereco'] ?></span></p>
                     </div>
                 </div>
             </div>

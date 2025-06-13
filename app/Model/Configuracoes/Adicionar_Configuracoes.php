@@ -45,6 +45,7 @@ $resultado = $postConf
     ->value('app_store', $_POST['app_store'])
     ->value('area_cliente', $_POST['area_cliente'])
     ->value('whatsapp', $_POST['whatsapp'])
+    ->value('endereco', $_POST['endereco'])
     ->post();
 
 if ($resultado == 1) {
