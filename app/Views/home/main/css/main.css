@@ -10,22 +10,13 @@
     background-color: #F1EFEF;
 }
 
-.imgSlideBanner1 {
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-image: url('/img/desktop.png');
-    display: block;
-    width: 100vw;
-    height: 100%;
-}
-
 .swiper-pagination-bullet-active {
     background: rgb(138, 186, 36);
 }
 
 .bannerSwipper,
 .Swiper-wrapper {
-    height: 570px !important;
+    height: 470px !important;
 }
 
 
@@ -136,8 +127,9 @@
         width: 50% !important;
     }
 
-    .imgSlideBanner1 {
-        background-image: url('/img/mobile.png');
+    .bannerSwipper,
+    .Swiper-wrapper {
+        height: 570px !important;
     }
 
     #banner1 {

@@ -1,13 +1,81 @@
+<?php
+$conDB = new Classes\ConDB;
+$getBanners = new Classes\Metodos($conDB);
+
+$banners = $getBanners
+    ->table('tb_banners')
+    ->select('*')
+    ->get();
+
+$gruposBanners = [];
+
+foreach ($banners as $banner) {
+    $baseName = str_replace('_mobile', '', pathinfo($banner->banner, PATHINFO_FILENAME));
+
+    if (!isset($gruposBanners[$baseName])) {
+        $gruposBanners[$baseName] = [
+            'desktop'  => null,
+            'mobile'   => null,
+            'url'      => null,
+            'clicavel' => null,
+        ];
+    }
+
+    if (strpos($banner->banner, '_mobile') !== false) {
+        $gruposBanners[$baseName]['mobile'] = $banner->banner;
+    } else {
+        $gruposBanners[$baseName]['desktop'] = $banner->banner;
+    }
+
+    if ($banner->url_direcionamento && $gruposBanners[$baseName]['url'] === null) {
+        $gruposBanners[$baseName]['url'] = $banner->url_direcionamento;
+        $gruposBanners[$baseName]['clicavel'] = $banner->clicavel;
+    }
+}
+?>
+
 <div class="section d-flex align-items-center">
     <div class="swiper" id="bannerSwipper">
         <div class="swiper-wrapper bannerSwipper">
-            <div class="swiper-slide pt-130">
-                <div class="imgSlideBanner1"></div>
-            </div>
+            <?php $index = 1; ?>
+            <?php foreach ($gruposBanners as $key => $banner): ?>
+                <div class="swiper-slide pt-130">
+                    <?php if ($banner['url'] && $banner['clicavel'] == 1): ?>
+                        <a href="<?= htmlspecialchars($banner['url']) ?>" target="_blank" style="display:block; width:100%; height:100%;">
+                        <?php endif; ?>
+
+                        <div class="imgSlideBanner<?= $index ?>"></div>
+
+                        <?php if ($banner['url'] && $banner['clicavel'] == 1): ?>
+                        </a>
+                    <?php endif; ?>
+                </div>
+                <?php $index++; ?>
+            <?php endforeach; ?>
         </div>
         <div class="swiper-pagination"></div>
     </div>
 </div>
+
+<style>
+    <?php $index = 1; ?><?php foreach ($gruposBanners as $key => $banner): ?>.imgSlideBanner<?= $index ?> {
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: block;
+        background-image: url('/img/banner/<?= $banner['desktop'] ?>');
+        width: 100vw;
+        height: 100%;
+    }
+
+    @media(max-width: 767.98px) {
+        .imgSlideBanner<?= $index ?> {
+            background-image: url('/img/banner/<?= $banner['mobile'] ?>');
+        }
+    }
+
+    <?php $index++; ?><?php endforeach; ?>
+</style>
 <div id="planosAGL">
     <?php
     $conDB = new Classes\ConDB;

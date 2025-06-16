@@ -15,6 +15,7 @@
                     <tr>
                         <th class="col">Nome</th>
                         <th scope="col">Valor(R$)</th>
+                        <th scope="col">Seção</th>
                         <th scope="col">Data Criação</th>
                         <th scope="col">Opções</th>
                     </tr>
@@ -29,10 +30,36 @@
                         ->get();
 
                     foreach ($getPlan as $plan) {
+
+                        $getPlanSva = new Classes\Metodos($conDb);
+
+                        $getPlanSva = $getPlanSva
+                            ->table('tb_sva_plan')
+                            ->select('id_sva, tipo_plano')
+                            ->where('id_plano', '=', $plan->id)
+                            ->get();
+
+                        $section = '';
+
+                        foreach ($getPlanSva as $planSva) {
+                            if ($planSva->tipo_plano == 'Seção') {
+                                $getSva = new Classes\Metodos($conDb);
+
+                                $getSva = $getSva
+                                    ->table('tb_sva')
+                                    ->select('titulo')
+                                    ->where('id', '=', $planSva->id_sva)
+                                    ->get();
+
+                                $section = $getSva[0]->titulo;
+                            }
+                        }
+
                     ?>
                         <tr class="fst-italic data-plan">
                             <th class="fw-semibold"><?= $plan->nome_plan ?></th>
                             <td><?= 'R$ ' . number_format($plan->valor, 2, ',', '.') ?></td>
+                            <th><?= $section ?></th>
                             <td><?= (new DateTime($plan->data_cadastro))->format('d/m/Y \à\s H:i') ?></td>
                             <td>
                                 <button data-id="<?php echo (new Classes\Encrypt)->encrypt($plan->id); ?>" modal-target="#modalAddPlan" class="modalEditPlan p-3 position-relative rounded-circle btn btn-primary">

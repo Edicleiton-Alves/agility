@@ -37,6 +37,31 @@ $app->post('/request/novaSenha', function () {
 	require PATH['Requests'] . 'Configuracoes/RecuperarSenha_ValidarSenha.php';
 });
 
+$app->post('/request/adicionarBanner', function () {
+	if (AUTH['status'] == 'success') {
+		require PATH['Requests'] . 'Configuracoes/Adicionar_Banner.php';
+	} else {
+		echo "<script> window.location = '/';</script>";
+	}
+});
+
+$app->put('/request/banner', function () {
+	if (AUTH['status'] == 'success') {
+		require PATH['Requests'] . 'Configuracoes/Editar_UrlBanner.php';
+	} else {
+		echo "<script> window.location = '/';</script>";
+	}
+});
+
+
+$app->delete('/request/banner', function () {
+	if (AUTH['status'] == 'success') {
+		require PATH['Requests'] . 'Configuracoes/Deletar_Banner.php';
+	} else {
+		echo "<script> window.location = '/';</script>";
+	}
+});
+
 $app->delete('/request/users/:id', function ($id) {
 	if (AUTH['status'] == 'success') {
 		require PATH['Requests'] . 'Configuracoes/Deletar_Usuario.php';

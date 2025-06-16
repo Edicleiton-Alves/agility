@@ -154,6 +154,121 @@
 		</div>
 	</form>
 </div>
+<?php
+$conDB = new Classes\ConDB;
+$Metodos = new Classes\Metodos($conDB);
+
+$banners = $Metodos->table('tb_banners')->get();
+
+$grupoBanners = [];
+foreach ($banners as $banner) {
+	$nome = $banner->banner;
+	$id = $banner->id;
+	$url = $banner->url_direcionamento;
+	$clicavel = $banner->clicavel;
+
+	$codigoBase = str_replace('_mobile', '', pathinfo($nome, PATHINFO_FILENAME));
+
+	if (!isset($grupoBanners[$codigoBase])) {
+		$grupoBanners[$codigoBase] = [
+			'desktop' => null,
+			'mobile' => null,
+			'url' => $url,
+			'clicavel' => $clicavel,
+			'id_desktop' => null,
+			'id_mobile' => null
+		];
+	}
+
+	if (strpos($nome, '_mobile') !== false) {
+		$grupoBanners[$codigoBase]['mobile'] = $nome;
+		$grupoBanners[$codigoBase]['id_mobile'] = $id;
+	} else {
+		$grupoBanners[$codigoBase]['desktop'] = $nome;
+		$grupoBanners[$codigoBase]['id_desktop'] = $id;
+	}
+}
+?>
+
+<div class="col-md-12 mt-4">
+	<h5 class="text-center">Banners principais</h5>
+	<div class="rounded-3 p-3 border shadow-boxes">
+		<div class="text-end mb-3">
+			<button id="addPlan" modal-target="#modalAdicionarBanner" class="modalAdicionarBanner btn btn-success rounded-3 shadow-sm">
+				<i class="text-success bi bi-plus-lg text-white"></i> Adicionar Banner
+			</button>
+		</div>
+
+		<?php foreach ($grupoBanners as $codigo => $banners): ?>
+			<div class="row mb-4 align-items-center p-2 border rounded">
+				<div class="col-12 text-center mt-2">
+					<div class="d-flex justify-content-center align-items-center mb-3">
+						<div class="flex-fill d-flex justify-content-start align-items-center">
+							<div class="form-floating w-100">
+								<input type="url"
+									class="form-control form-control-sm"
+									id="url_direcionamento_<?= $codigo ?>"
+									placeholder="URL de direcionamento"
+									value="<?= !empty($banners['url']) ? htmlspecialchars($banners['url']) : '' ?>">
+								<label for="url_direcionamento_<?= $codigo ?>">URL de direcionamento</label>
+							</div>
+
+							<?php if (!empty($banners['url'])): ?>
+								<a href="<?= htmlspecialchars($banners['url']) ?>" target="_blank"
+									class="btn btn-outline-primary ms-2"
+									title="Ver Link">
+									<i class="bi bi-link-45deg"></i>
+								</a>
+							<?php endif; ?>
+
+							<button type="button"
+								class="btn btn-outline-secondary ms-2 editar-url-btn"
+								title="Editar URL">
+								<i class="bi bi-pencil-square"></i>
+							</button>
+							<button type="button"
+								class="btn btn-outline-success ms-2 salvar-url-btn d-none"
+								data-id-desktop="<?= $banners['id_desktop'] ?>"
+								data-id-mobile="<?= $banners['id_mobile'] ?>"
+								data-cod-url="<?= $codigo ?>"
+								title="Salvar URL" modal-target="#modalEditUrlBanner">
+								<i class="bi bi-clipboard-check-fill"></i>
+							</button>
+						</div>
+
+						<div class="p-2 flex-fill d-flex justify-content-end">
+							<button type="button"
+								class="excluirBanner p-3 position-relative btn btn-danger"
+								data-id-desktop="<?= $banners['id_desktop'] ?>"
+								data-id-mobile="<?= $banners['id_mobile'] ?>"
+								title="Excluir Banner" modal-target="#modalExcluirBanner">
+								<i class="position-absolute top-50 start-50 translate-middle bi bi-trash"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 text-center">
+					<?php if ($banners['desktop']): ?>
+						<strong>Desktop:</strong><br>
+						<img src="img/banner/<?= $banners['desktop'] ?>" alt="Banner Desktop" class="img-fluid rounded border mb-2" style="height: auto;">
+					<?php else: ?>
+						<em>Sem banner Desktop</em>
+					<?php endif; ?>
+				</div>
+
+				<div class="col-md-6 text-center">
+					<?php if ($banners['mobile']): ?>
+						<strong>Mobile:</strong><br>
+						<img src="img/banner/<?= $banners['mobile'] ?>" alt="Banner Mobile" class="img-fluid rounded border mb-2" style="max-width: 200px; height: auto;">
+					<?php else: ?>
+						<em>Sem banner Mobile</em>
+					<?php endif; ?>
+				</div>
+			</div>
+		<?php endforeach; ?>
+	</div>
+</div>
 
 <?php
 require_once 'Modais/Modal_Usuarios.php';
@@ -211,7 +326,6 @@ require_once 'Modais/Modal_Usuarios.php';
 		});
 	});
 
-
 	$('.excluirUsuario').click(function() {
 		let id = $(this).attr('data-id');
 		$('#idExcluirUsuario').val(id);
@@ -253,4 +367,69 @@ require_once 'Modais/Modal_Usuarios.php';
 
 		field.value = v;
 	}
+
+	$('.modalAdicionarBanner').click(function() {
+		let modal = $(this).attr('modal-target');
+		$(modal + ' .modal-title').text('Cadastrar Banner');
+		$(modal + ' form').attr('method', 'post');
+		$(modal + ' .salvar').val('Salvar');
+		$(modal + ' form')[0].reset();
+		$(modal + ' input[type="file"]').val('');
+		$('#previewDesktopContainer').hide();
+		$('#bannerDesktopPreview').attr('src', '');
+		$('#previewMobileContainer').hide();
+		$('#bannerMobilePreview').attr('src', '');
+		$(modal).modal('show');
+	});
+
+	$('.salvar').click(function() {
+		let btnSubmitText = $(this).html();
+		$(this).addClass('disabled').html('Salvando... <div class="spinner-border text-light" role="status" style="width: 20px; height: 20px"></div>');
+		let formId = $('.modal.show form').attr('id');
+		let form = document.getElementById(formId);
+		let reload = $(form).attr('reload');
+		let modal = '#' + $('.modal.show').attr('id');
+		let action = $(modal + ' form').attr('action');
+		envForm.setForm(form);
+		setTimeout(() => {
+			let dados = envForm.request();
+			if (dados.status == 'success') {
+				$(modal).modal('hide');
+				toast(dados.status, dados.msg);
+				$('#v-pills-' + reload).html('<div class="d-flex vh-60"><div class="m-auto spinner-border text-warning" role="status" style="width: 6rem; height: 6rem;"></div></div>').off().load('/load/' + reload);
+
+			} else {
+				$(this).removeClass('disabled').html(btnSubmitText);
+				toast(dados.status, dados.msg);
+			}
+		}, 50);
+	});
+
+	$('.editar-url-btn').click(function() {
+		var container = $(this).closest('.d-flex');
+		container.find('.salvar-url-btn').removeClass('d-none');
+		$(this).addClass('d-none');
+	});
+
+	$('.excluirBanner').click(function() {
+		let modal = $(this).attr('modal-target');
+		let desktop = $(this).attr('data-id-desktop');
+		let mobile = $(this).attr('data-id-mobile');
+		$(modal + ' #idExcluirDeskTop').val(desktop);
+		$(modal + ' #idExcluirMobile').val(mobile);
+		$(modal).modal('show');
+	});
+
+	$('.salvar-url-btn').click(function() {
+		let modal = $(this).attr('modal-target');
+		let desktop = $(this).attr('data-id-desktop');
+		let mobile = $(this).attr('data-id-mobile');
+		let cod = $(this).attr('data-cod-url');
+		let urlInputId = '#url_direcionamento_' + cod;
+		let urlAtual = $(urlInputId).val();
+		$(modal + ' #idEditarDeskTop').val(desktop);
+		$(modal + ' #idEditarMobile').val(mobile);
+		$(modal + ' #url_direcionamento_modal').val(urlAtual);
+		$(modal).modal('show');
+	});
 </script>
