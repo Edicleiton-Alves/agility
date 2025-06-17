@@ -59,7 +59,6 @@ define('CONFIGURACAO', [
 	<script type="text/javascript" src="/js/jquery-3.6.1.min.js"></script>
 	<script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="/js/swiper-bundle.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAip-QesZTgTNaIZ21zKK4cv9GspTQA6p0" defer></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
 	<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 	<script>
